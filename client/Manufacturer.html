@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manufacturer</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sjcl/1.0.8/sjcl.js"></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"
+  ></script>
+  <script type="module" src="index.mjs"></script>
+  <script type="module" src="manufacturer.js"></script>
+  <script type="module" src="scanner.mjs"></script>
+       
+   <script defer type="text/javascript" src="adaptarmin.js"></script>
+   <script defer type="text/javascript" src="vuemin.js"></script>
+   <script defer type="text/javascript" src="instascan.js"></script>
+   <script type="module" src="uploadimage.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Controlled Drugs Administration</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="index.html">CDR</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Manufacturer.html">Manufacturer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Hospital.html">Hospital</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Doctor.html">Doctor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Nurse.html">Nurse</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Track.html">Track</a>
+            </li>
+           
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="">
+      <div class="container m-5 col w-60" id="info">
+        <h2 class="text-center mb-5">Add Lot</h2>
+
+        <div class="container col-6">
+         
+          <div class="form-floating mb-5">
+            <input
+              type="text"
+              class="form-control border-success rounded"
+              id="drugName"
+              placeholder="Drug Name"
+             
+            />
+            <label for="drugName">Drug Name</label>
+          </div>
+          <div class="form-floating mb-5">
+            <input
+              type="date"
+              class="form-control border-success rounded"
+              id="drugManu"
+              placeholder="MF. Date"
+            />
+            <label for="drugManu">MF. Date</label>
+          </div>
+          <div class="form-floating mb-5">
+            <input
+              type="date"
+              class="form-control border-success rounded"
+              id="drugExp"
+              placeholder="EXP. Date"
+            />
+            <label for="drugExp">EXP. Date</label>
+          </div>
+          <div class="form-floating mb-5">
+            <input
+              type="number"
+              class="form-control border-success rounded"
+              id="drugQu"
+              placeholder="Drug Quantity in Units"
+            />
+            <label for="drugQu">Drug Quantity in Units</label>
+          </div>
+          <div class="form-floating mb-5">
+            <input
+              type="number"
+              class="form-control border-success rounded"
+              id="drugQpu"
+              placeholder="Drug Volume Per Unit (ml/mg)"
+            />
+            <label for="drugQpu">Drug Volume Per Unit (ml/mg)</label>
+          </div>
+          <div class="form-floating mb-5">
+            <input
+              type="text"
+              class="form-control border-success rounded"
+              id="hAddr"
+              placeholder="Assigned Hospital ID"
+            />
+            <label for="hAddr">Assigned Hospital ID</label>
+          </div>
+          <div class="form-floating mb-5">
+            <input
+              type="text"
+              class="form-control border-success rounded"
+              id="mAddr"
+              placeholder="Manufacturer ID"
+              disabled
+            />
+            <label for="mAddr">Manufacturer ID</label>
+          </div>
+
+          <div class="container text-center">
+            <button class="btn btn-primary" id="addlotbtn">Add</button>
+          </div>
+        </div>
+      </div>
+      <div class="container m-5 col d-none" id="qrdisplay">
+        <h2 class="text-center mb-5">Generated QR Code</h2>
+
+        <div class="container d-flex justify-content-center flex-column">
+          <img
+            class="img-fluid mx-auto"
+            id="qrImg"
+            alt="QR code"
+            width="200"
+            height="200"
+          />
+          <div class="container text-center mt-5">
+            <button
+              class="btn btn-primary"
+              id="downloadBtn"
+              onclick="downloadQR()"
+              disabled
+            >
+              Download
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="">
+      <div class="container m-5 col">
+        <h2 class="text-center">Update drug state to <span class="text-danger">In-Transit</span></h2>
+        <div class="container d-flex justify-content-center flex-column">
+         
+          <div class="container">
+            <div class="container text-center">
+              <video id="preview" width="300" height="300"></video>
+              <h6 id="scanstatus">Scanning...</h6>
+            </div>
+    
+            <div class="container d-flex align-items-center flex-column text-center col-4">
+              <input type="text" class="form-control border-success rounded mb-3 " name="text" id="drugID2" disabled placeholder="Drug ID">
+              <button class="btn btn-danger " id="updatelotbtn">In-Transit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="container m-5 text-center">
+      <h2 class="mb-5">Upload Image Proof</h2>
+      <div class="row">
+          <div class="col-md-6 mx-auto">
+              <div class="d-flex">
+                  <input type="file" class="form-control border-success rounded" name="image" id="image" />
+                  <button id="btn" class="btn btn-dark" style="margin-left: 5px;">Upload</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  <script>
+    let nav = document.getElementsByClassName("nav-link");
+    nav[1].classList.add("text-decoration-underline");
+    nav[1].classList.add("active");
+  </script>
+  <script>
+   
+    var imgElement = document.getElementById("qrImg");
+    let info = document.getElementById("info");
+    let qrDisplay = document.getElementById("qrdisplay");
+    if (imgElement && imgElement.src) {
+      if (!info.classList.contains("d-none")) {
+        info.classList.add("d-none");
+      }
+      if (qrDisplay.classList.contains("d-none")) {
+        qrDisplay.classList.remove("d-none");
+      }
+    } else {
+      if (info.classList.contains("d-none")) {
+        info.classList.remove("d-none");
+      }
+      if (!qrDisplay.classList.contains("d-none")) {
+        qrDisplay.classList.add("d-none");
+      }
+    }
+    function downloadQR() {
+      let dataUrl = document
+        .getElementById("downloadBtn")
+        .getAttribute("data-url");
+
+      // Convert the data URL to a Blob
+      fetch(dataUrl)
+        .then((response) => response.blob())
+        .then((blob) => {
+          // Create a Blob URL
+          const blobUrl = URL.createObjectURL(blob);
+
+          // Create an anchor element with the download attribute and target="_blank"
+          const a = document.createElement("a");
+          a.href = blobUrl;
+          a.download = "generated_qr_code.png";
+
+          // Append the anchor to the document and trigger the click event
+          document.body.appendChild(a);
+          a.click();
+
+          // Remove the anchor from the document
+          document.body.removeChild(a);
+        });
+      }
+      </script>
+  </body>
+ 
+  
+</html>

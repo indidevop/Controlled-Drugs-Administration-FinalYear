@@ -1,0 +1,62 @@
+:root {
+  --prm-color: #6495ed;
+  --prm-gray: #3c3b3a;
+  --done: #03a213;
+}
+.steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.step-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--prm-gray);
+  transition: 0.4s;
+  color: #fff;
+}
+.step-button[aria-expanded="true"] {
+  width: 60px;
+  height: 60px;
+  background-color: var(--done);
+  color: #fff;
+}
+.done {
+  background-color: var(--done);
+  color: #fff;
+}
+.step-item {
+  z-index: 10;
+  text-align: center;
+}
+#progress {
+  -webkit-appearance: none;
+  position: absolute;
+  width: 95%;
+  z-index: 5;
+  height: 4px;
+  margin-left: 28px;
+  margin-bottom: 18px;
+}
+/* to customize progress bar */
+#progress::-webkit-progress-value {
+  background-color: var(--done);
+  transition: 0.5s ease;
+}
+#progress::-webkit-progress-bar {
+  background-color: var(--prm-gray);
+}
+.labeledImage {
+  text-align: center;
+
+}
+
+.labeledImage img {
+  height: 250px; /* Set a fixed height for the images */
+  width: auto; /* Maintain the aspect ratio */
+  margin-bottom: 10px; /* Add some space below the image */
+}

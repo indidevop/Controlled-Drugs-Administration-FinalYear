@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome</title>
+    <title>Welcome CDR</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Controlled Drugs Administration</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="index.html">CDR</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Manufacturer.html">Manufacturer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Hospital.html">Hospital</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Doctor.html">Doctor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Nurse.html">Nurse</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Track.html">Track</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-5 w-75">
+      <h2 class="text-center mb-5">Add Actors</h2>
+
+      <div class="container w-50">
+        <div class="form-floating mb-5">
+          <input
+            type="text"
+            class="form-control border-success rounded"
+            id="actoraddress"
+            value="0x0000000000000000000000000000000000000000"
+          />
+          <label for="actoraddress" 
+            >Actor Address</label
+          >
+        </div>
+
+        <div class="form-floating mb-5">
+       
+        <select
+          class="form-select mb-5 border-success rounded"
+          aria-label="Default select example"
+          id="actorType"
+        >
+          <option selected value="manufacturer">Manufacturer</option>
+          <option value="hospital">Hospital</option>
+        </select>
+        <label for="actorType"
+        >Select actor type</label
+      >
+        </div>
+        <div class="container text-center">
+          <button class="btn btn-primary" id="addbtn">Add</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      let nav = document.getElementsByClassName("nav-link");
+      nav[0].classList.add("text-decoration-underline");
+      nav[0].classList.add("active");
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="index.mjs"></script>
+    <script type="module" src="cdr.js"></script>
+  </body>
+</html>
